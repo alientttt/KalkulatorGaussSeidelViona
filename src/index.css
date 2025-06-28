@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+body {
+  font-family: "Pixelify Sans", cursive;
+  min-height: 100vh;
+  color: #fff;
+}
+.pixel-border {
+  box-shadow: 0 0 0 4px #fff, 0 0 0 8px #000;
+}
+.pixel-button {
+  background: linear-gradient(45deg, #ff5e62, #f76b1c);
+  transition: transform 0.1s;
+}
+.pixel-button:hover {
+  transform: scale(1.05);
+}
+input,
+textarea {
+  font-family: "Pixelify Sans", cursive;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #fff;
+  color: #fff;
+}
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  input,
+  textarea {
+    font-size: 0.8rem;
+  }
+}
