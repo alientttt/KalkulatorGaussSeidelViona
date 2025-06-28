@@ -225,7 +225,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[url('./assets/bg-5.jif')] bg-cover relative overflow-hidden rounded-[140px] py-6">
+    <div className="min-h-screen bg-[url('./assets/bg-5.jif')] bg-cover relative overflow-hidden rounded-xl py-6">
       {/* Futuristic Background Elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-10 w-32 h-32 bg-pink-500 rounded-full blur-3xl animate-pulse"></div>
