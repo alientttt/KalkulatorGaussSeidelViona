@@ -40,7 +40,7 @@ function gaussSeidel(A, b, x0, tolerance, maxIterations) {
 function MatrixInput({ matrix, onChange }) {
   return (
     <div className="bg-gradient-to-br from-pink-500/20 to-purple-600/20 backdrop-blur-sm p-6 rounded-2xl border-2 border-pink-400/50 shadow-lg shadow-pink-500/20 hover:shadow-pink-500/40 transition-all duration-300">
-      <h2 className="text-xl sm:text-2xl mb-4 font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+      <h2 className="text-xl sm:text-2xl mb-4 font-bold text-pink-600">
         Matriks A (3x3) ✨
       </h2>
       {matrix.map((row, i) => (
@@ -62,8 +62,8 @@ function MatrixInput({ matrix, onChange }) {
 
 function VectorInput({ vector, title, onChange }) {
   return (
-    <div className="bg-gradient-to-br from-purple-500/20 to-pink-600/20 backdrop-blur-sm p-6 rounded-2xl border-2 border-purple-400/50 shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all duration-300">
-      <h2 className="text-xl sm:text-2xl mb-4 font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+    <div className="bg-gradient-to-br from-pink-500/20 to-purple-600/20 backdrop-blur-sm p-6 rounded-2xl border-2 border-pink-400/50 shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all duration-300">
+      <h2 className="text-xl sm:text-2xl mb-4 font-bold text-pink-600">
         {title} 🚀
       </h2>
       {vector.map((val, i) => (
@@ -81,12 +81,12 @@ function VectorInput({ vector, title, onChange }) {
 
 function ParametersInput({ tolerance, maxIterations, onToleranceChange, onMaxIterationsChange }) {
   return (
-    <div className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 backdrop-blur-sm p-6 rounded-2xl border-2 border-pink-400/50 shadow-lg shadow-pink-500/20 hover:shadow-pink-500/40 transition-all duration-300">
-      <h2 className="text-xl sm:text-2xl mb-4 font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+    <div className="bg-gradient-to-br from-pink-500/20 to-purple-600/20 backdrop-blur-sm p-6 rounded-2xl border-2 border-pink-400/50 shadow-lg shadow-pink-500/20 hover:shadow-pink-500/40 transition-all duration-300">
+      <h2 className="text-xl sm:text-2xl mb-4 font-bold text-pink-600">
         Parameters ⚙️
       </h2>
       <div className="mb-4">
-        <label className="block text-black font-semibold mb-2">Batas Toleransi:</label>
+        <label className="block text-slate-600 font-semibold shadow-2xl mb-2">Batas Toleransi:</label>
         <input
           type="number"
           value={tolerance}
@@ -95,7 +95,7 @@ function ParametersInput({ tolerance, maxIterations, onToleranceChange, onMaxIte
         />
       </div>
       <div>
-        <label className="block text-black font-semibold mb-2">Max Iterasi:</label>
+        <label className="block text-slate-600 font-semibold shadow-2xl mb-2">Max Iterasi:</label>
         <input
           type="number"
           value={maxIterations}
@@ -110,34 +110,34 @@ function ParametersInput({ tolerance, maxIterations, onToleranceChange, onMaxIte
 function ResultDisplay({ result }) {
   if (!result) return null;
   return (
-    <div className="bg-gradient-to-br from-purple-600/30 to-pink-600/30 backdrop-blur-md p-6 rounded-2xl border-2 border-purple-400/60 shadow-xl shadow-purple-500/30 mt-8 animate-pulse">
-      <h2 className="text-xl sm:text-2xl mb-4 font-bold bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
+    <div className="bg-gradient-to-br from-pink-500/20 to-purple-600/20 backdrop-blur-md p-6 rounded-2xl border-2 border-pink-400/60 shadow-xl shadow-purple-500/30 mt-8">
+      <h2 className="text-xl sm:text-2xl mb-4 font-bold text-pink-600">
         Results 🎯
       </h2>
-      <div className="bg-black/30 p-4 rounded-xl mb-4 border border-pink-400/30">
+      <div className="bg-white/30 p-4 rounded-xl mb-4 border border-pink-600">
         <p className="text-black font-semibold text-lg">
-          💫 Solution: [{result.solution.map(x => x.toFixed(4)).join(', ')}]
+          💫 Solution: [{result.solution.map(x => x.toFixed(2)).join(', ')}]
         </p>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-sm sm:text-base bg-black/20 rounded-xl overflow-hidden">
-          <thead className="bg-gradient-to-r from-pink-500 to-purple-500">
+          <thead className="bg-gradient-to-r from-pink-600 to-gray-200">
             <tr>
               <th className="p-3 text-black font-bold">Step</th>
               <th className="p-3 text-black font-bold">x₁</th>
               <th className="p-3 text-black font-bold">x₂</th>
               <th className="p-3 text-black font-bold">x₃</th>
-              <th className="p-3 text-black font-bold">Error</th>
+              <th className="p-3 text-black font-bold">Batas Error</th>
             </tr>
           </thead>
           <tbody>
             {result.iterations.map(({ step, x, error }, index) => (
               <tr key={step} className={`${index % 2 === 0 ? 'bg-pink-500/10' : 'bg-purple-500/10'} hover:bg-white/10 transition-colors duration-200`}>
                 <td className="p-3 text-black font-semibold text-center">{step}</td>
-                <td className="p-3 text-black font-semibold text-center">{x[0].toFixed(4)}</td>
-                <td className="p-3 text-black font-semibold text-center">{x[1].toFixed(4)}</td>
-                <td className="p-3 text-black font-semibold text-center">{x[2].toFixed(4)}</td>
-                <td className="p-3 text-black font-semibold text-center">{error.toFixed(6)}</td>
+                <td className="p-3 text-black font-semibold text-center">{x[0].toFixed(2)}</td>
+                <td className="p-3 text-black font-semibold text-center">{x[1].toFixed(2)}</td>
+                <td className="p-3 text-black font-semibold text-center">{x[2].toFixed(2)}</td>
+                <td className="p-3 text-black font-semibold text-center">{error.toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
@@ -149,39 +149,43 @@ function ResultDisplay({ result }) {
 
 function AlgorithmExplanation() {
   return (
-    <div className=" backdrop-blur-sm p-6 rounded-2xl border-2 border-purple-400/50 shadow-lg shadow-purple-500/20 mb-8">
-      <h2 className="text-xl sm:text-2xl mb-4 font-bold bg-gradient-to-r from-slate-500 to-pink-300 bg-clip-text text-transparent">
+    <div className=" bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-2 border-pink-600/50 shadow-lg shadow-purple-500/20 mb-8">
+      <h2 className="text-xl sm:text-2xl mb-4 font-bold text-pink-600">
         Penjelasan Singkat 🧠
       </h2>
       <div className="text-sm sm:text-base text-black/90">
         <p className="mb-4 leading-relaxed">
-          The <strong className="text-pink-300">Metode Gauss Seidel</strong> teknik iteratif untuk menyelesaikan persamaan linear 
+          <strong className="text-pink-400 font-bold">Metode Gauss Seidel</strong> adalah teknik iteratif untuk menyelesaikan persamaan linear 
           <span className="font-mono bg-black/30 px-2 py-1 rounded mx-1">Ax = b</span>, artinya 
           <span className="font-mono bg-black/30 px-2 py-1 rounded mx-1">A</span> adalah matriks, 
           <span className="font-mono bg-black/30 px-2 py-1 rounded mx-1">x</span> adalah variabelnya, dan
           <span className="font-mono bg-black/30 px-2 py-1 rounded mx-1">b</span> matriks dari hasil persamaan.
         </p>
-        <h3 className="text-lg font-bold text-pink-300 mb-3">Steps:</h3>
-        <div className="space-y-2 text-black/80">
+        <h3 className="text-lg font-bold text-pink-600 mb-3">Steps:</h3>
+        <div className="space-y-2 text-slate-600">
           <div className="flex items-start">
-            <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">1</span>
-            <p>Input nilai matriks,solusi awal,batas toleransi dan max iterasi</p>
+            <span className="bg-gradient-to-r from-pink-400 to-slate-200 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">1</span>
+            <p>Input nilai persamaan kedalam bentuk matriks Ax=b</p>
           </div>
           <div className="flex items-start">
-            <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">2</span>
-            <p>Input nilai matriks,solusi awal,batas toleransi dan max iterasi</p>
+            <span className="bg-gradient-to-r from-pink-400 to-slate-200 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">2</span>
+            <p>Input nilai solusi awal</p>
           </div>
           <div className="flex items-start">
-            <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">3</span>
-            <p>Input nilai matriks,solusi awal,batas toleransi dan max iterasi</p>
+            <span className="bg-gradient-to-r from-pink-400 to-slate-200 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">3</span>
+            <p>Input nilai batas toleransi</p>
           </div>
           <div className="flex items-start">
-            <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">4</span>
-            <p>Input nilai matriks,solusi awal,batas toleransi dan max iterasi</p>
+            <span className="bg-gradient-to-r from-pink-400 to-slate-200 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">4</span>
+            <p>Input nilai max iterasi supaya iterasinya tidak terlalu banyak</p>
           </div>
           <div className="flex items-start">
-            <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">5</span>
-            <p>Kalkulator ini khusus untuk matriks 3x3 saja.</p>
+            <span className="bg-gradient-to-r from-pink-400 to-slate-200 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">5</span>
+            <p>Kalkulator ini khusus untuk matriks 3x3 saja</p>
+          </div>
+          <div className="flex items-start">
+            <span className="bg-gradient-to-r from-pink-400 to-slate-200 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">6</span>
+            <p>Hasil akhir akan muncul dikolom Result ketika sudah selesai.</p>
           </div>
         </div>
       </div>
@@ -191,14 +195,14 @@ function AlgorithmExplanation() {
 
 function App() {
   const [matrixA, setMatrixA] = useState([
-    [4, 1, 2],
-    [3, 5, 1],
-    [1, 1, 3]
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
   ]);
-  const [vectorB, setVectorB] = useState([4, 7, 3]);
+  const [vectorB, setVectorB] = useState([0, 0, 0]);
   const [initialX, setInitialX] = useState([0, 0, 0]);
-  const [tolerance, setTolerance] = useState(0.0001);
-  const [maxIterations, setMaxIterations] = useState(100);
+  const [tolerance, setTolerance] = useState(0);
+  const [maxIterations, setMaxIterations] = useState(0);
   const [result, setResult] = useState(null);
 
   const handleMatrixAChange = (i, j, value) => {
@@ -225,7 +229,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[url('./assets/bg-5.jif')] bg-cover relative overflow-hidden rounded-xl py-6">
+    <div className="min-h-screen bg-[url('./assets/pink-bg.jif')] bg-cover relative overflow-hidden rounded-xl py-6">
       {/* Futuristic Background Elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-10 w-32 h-32 bg-pink-500 rounded-full blur-3xl animate-pulse"></div>
@@ -244,10 +248,10 @@ function App() {
 
       <div className="container mx-auto p-4 sm:p-8 max-w-4xl relative z-10 fle">
         <div className="text-center mb-8">
-          <h1 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-slate-500 via-purple-300 to-pink-300 bg-clip-text text-transparent mb-4 animate-pulse">
+          <h1 className="text-4xl sm:text-6xl font-bold bg-pink-600 bg-clip-text text-transparent mb-4 animate-pulse">
             🌟 GAUSS-SEIDEL 🌟
           </h1>
-          <p className="text-lg text-gray-500 font-semibold">
+          <p className="text-xl text-pink-400 font-semibold shadow-2xl">
             Metode Numerik Semester 4 ✨
           </p>
         </div>
@@ -271,7 +275,7 @@ function App() {
         
         <button
           onClick={calculate}
-          className="w-full p-6 text-xl font-bold  hover:bg-pink-600 rounded-2xl border-2 border-white/20 text-black shadow-lg shadow-pink-500/50 hover:shadow-pink-500/70 transition-all duration-300 transform hover:scale-105 active:scale-95"
+          className="w-full p-6 text-xl font-bold  bg-pink-400 hover:bg-pink-600 rounded-2xl border-2 border-white/20 text-white/80 shadow-lg shadow-pink-500/50 hover:shadow-pink-500/70 transition-all duration-300 transform hover:scale-105 active:scale-95"
         >
           🚀 Kalkulasikan 🚀
         </button>
