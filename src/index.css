@@ -5,6 +5,9 @@ body {
   min-height: 100vh;
   color: #fff;
 }
+.mA {
+  font-family: "Sans Serif";
+}
 .pixel-border {
   box-shadow: 0 0 0 4px #fff, 0 0 0 8px #000;
 }

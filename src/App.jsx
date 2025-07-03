@@ -19,7 +19,7 @@ function gaussSeidel(A, b, x0, tolerance, maxIterations) {
           sum -= A[i][j] * (j < i ? xNew[j] : x[j]);
         }
       }
-      xNew[i] = sum / A[i][i];
+      xNew[i] = sum / A[i][i]; 
       maxError = Math.max(maxError, Math.abs(xNew[i] - x[i]));
     }
 
@@ -29,7 +29,7 @@ function gaussSeidel(A, b, x0, tolerance, maxIterations) {
       error: maxError
     });
 
-    error = maxError;
+    error = maxError; 
     x = [...xNew];
     iteration++;
   }
@@ -51,7 +51,7 @@ function MatrixInput({ matrix, onChange }) {
               type="number"
               value={val}
               onChange={(e) => onChange(i, j, e.target.value)}
-              className="w-16 p-2 rounded-xl bg-gradient-to-r from-pink-100 to-purple-100 border-2 border-pink-300 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-200 text-gray-800 font-semibold"
+              className="mA w-16 p-2 rounded-xl bg-gradient-to-r from-pink-100 to-purple-100 border-2 border-pink-300 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-200 text-gray-800 font-semibold"
             />
           ))}
         </div>
@@ -72,7 +72,7 @@ function VectorInput({ vector, title, onChange }) {
           type="number"
           value={val}
           onChange={(e) => onChange(i, e.target.value)}
-          className="w-full p-3 mb-2 rounded-xl bg-gradient-to-r from-purple-100 to-pink-100 border-2 border-purple-300 focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-purple-300 transition-all duration-200 text-gray-800 font-semibold"
+          className="mA w-full p-3 mb-2 rounded-xl bg-gradient-to-r from-purple-100 to-pink-100 border-2 border-purple-300 focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-purple-300 transition-all duration-200 text-gray-800 font-semibold"
         />
       ))}
     </div>
@@ -91,7 +91,7 @@ function ParametersInput({ tolerance, maxIterations, onToleranceChange, onMaxIte
           type="number"
           value={tolerance}
           onChange={(e) => onToleranceChange(parseFloat(e.target.value) || 0.0001)}
-          className="w-full p-3 rounded-xl bg-gradient-to-r from-pink-100 to-purple-100 border-2 border-pink-300 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-200 text-gray-800 font-semibold"
+          className="mA w-full p-3 rounded-xl bg-gradient-to-r from-pink-100 to-purple-100 border-2 border-pink-300 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-200 text-gray-800 font-semibold"
         />
       </div>
       <div>
@@ -100,7 +100,7 @@ function ParametersInput({ tolerance, maxIterations, onToleranceChange, onMaxIte
           type="number"
           value={maxIterations}
           onChange={(e) => onMaxIterationsChange(parseInt(e.target.value) || 100)}
-          className="w-full p-3 rounded-xl bg-gradient-to-r from-pink-100 to-purple-100 border-2 border-pink-300 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-200 text-gray-800 font-semibold"
+          className="mA w-full p-3 rounded-xl bg-gradient-to-r from-pink-100 to-purple-100 border-2 border-pink-300 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-200 text-gray-800 font-semibold"
         />
       </div>
     </div>
@@ -115,7 +115,7 @@ function ResultDisplay({ result }) {
         Results 🎯
       </h2>
       <div className="bg-white/30 p-4 rounded-xl mb-4 border border-pink-600">
-        <p className="text-black font-semibold text-lg">
+        <p className="text-black font-semibold text-lg mA">
           💫 Solution: [{result.solution.map(x => x.toFixed(2)).join(', ')}]
         </p>
       </div>
@@ -133,11 +133,11 @@ function ResultDisplay({ result }) {
           <tbody>
             {result.iterations.map(({ step, x, error }, index) => (
               <tr key={step} className={`${index % 2 === 0 ? 'bg-pink-500/10' : 'bg-purple-500/10'} hover:bg-white/10 transition-colors duration-200`}>
-                <td className="p-3 text-black font-semibold text-center">{step}</td>
-                <td className="p-3 text-black font-semibold text-center">{x[0].toFixed(2)}</td>
-                <td className="p-3 text-black font-semibold text-center">{x[1].toFixed(2)}</td>
-                <td className="p-3 text-black font-semibold text-center">{x[2].toFixed(2)}</td>
-                <td className="p-3 text-black font-semibold text-center">{error.toFixed(2)}</td>
+                <td className="mA p-3 text-black font-semibold text-center">{step}</td>
+                <td className="mA p-3 text-black font-semibold text-center">{x[0].toFixed(2)}</td>
+                <td className="mA p-3 text-black font-semibold text-center">{x[1].toFixed(2)}</td>
+                <td className="mA p-3 text-black font-semibold text-center">{x[2].toFixed(2)}</td>
+                <td className="mA p-3 text-black font-semibold text-center">{error.toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
